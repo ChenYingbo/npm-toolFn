@@ -20,6 +20,27 @@ const Utils = {
     //}
     //return (num / si[i-1].value).toFixed(digits) + si[i-1].symbol;
     return (num / si[i].value).toFixed(digits) + si[i].symbol;
+  },
+  getRandom : (min, max) => {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  },
+  hidePhone: (phone) => {
+    let p = phone.toString().split('-')
+    var reg = /^(\d{3})\d{4}(\d{4})$/
+    let tel = p[1]? p[1].replace(reg, "$1****$2") : ''
+    return tel
+  },
+  checkPhone: (phone) => {
+    return /^[1][3,4,5,6,7,8,9][0-9]{9}$/.test(phone)
+  },
+  checkMail: mail => {
+    if (!/\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/.test(mail)) {
+      return false
+    } else {
+      return true
+    }
   }
 }
 
